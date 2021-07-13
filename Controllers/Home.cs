@@ -9,7 +9,7 @@ namespace API.Controllers
         [HttpGet]
         public ActionResult GetHomePage()
         {
-            return Ok();
+            return Ok("API");
         }
     }
 }
