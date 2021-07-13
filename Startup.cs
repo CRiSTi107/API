@@ -36,6 +36,8 @@ namespace api
                 opt.UseNpgsql(Configuration.GetConnectionString("UserConnection"));
             });
 
+            System.Console.WriteLine(Configuration.GetConnectionString("UserConnection"));
+
             services.AddControllers().AddNewtonsoftJson(s =>
             {
                 s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
