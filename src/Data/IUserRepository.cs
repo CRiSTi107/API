@@ -1,0 +1,18 @@
+using System.Collections.Generic;
+using Api.Entities;
+
+namespace Api.Data
+{
+    public interface IUserRepository
+    {
+        bool SaveChanges();
+
+        IEnumerable<User> GetAllUsers();
+        User GetUserById(int id);
+        User GetUserByEmailAndPassword(string Email, string Password);
+        void CreateUser(User user);
+        void UpdateUser(User user);
+        void DeleteUser(User user);
+    }
+
+}
