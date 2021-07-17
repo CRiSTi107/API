@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Api.Service
 {
@@ -57,9 +58,9 @@ namespace Api.Service
             return _userRepository.GetAllUsers();
         }
 
-        public User GetById(int id)
+        public async Task<User> GetById(int id)
         {
-            return _userRepository.GetUserById(id);
+            return await _userRepository.GetUserById(id);
         }
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Api.Attributes;
 using Api.Service;
+using System.Threading.Tasks;
 
 namespace Api.Controllers
 {
@@ -37,9 +38,9 @@ namespace Api.Controllers
 
         // GET api/users/{id}
         [HttpGet("{id}", Name = "GetUserById")]
-        public ActionResult<UserReadDTO> GetUserById(int id)
+        public async Task<ActionResult<UserReadDTO>> GetUserById(int id)
         {
-            User user = _repository.GetUserById(id);
+            User user = await _repository.GetUserById(id);
             if (user != null)
                 return Ok(_mapper.Map<UserReadDTO>(user));
             else
@@ -65,9 +66,9 @@ namespace Api.Controllers
 
         // PUT api/users/{id}
         [HttpPut("{id}")]
-        public ActionResult UpdateUser(int id, UserUpdateDTO userUpdateDTO)
+        public async Task<ActionResult> UpdateUser(int id, UserUpdateDTO userUpdateDTO)
         {
-            var userModelFromRepository = _repository.GetUserById(id);
+            var userModelFromRepository = await _repository.GetUserById(id);
 
             if (userModelFromRepository == null)
                 return NotFound();
@@ -83,9 +84,9 @@ namespace Api.Controllers
 
         // PATCH api/users/{id}
         [HttpPatch("{id}")]
-        public ActionResult PartialUserUpdate(int id, JsonPatchDocument<UserUpdateDTO> patchDocument)
+        public async Task<ActionResult> PartialUserUpdate(int id, JsonPatchDocument<UserUpdateDTO> patchDocument)
         {
-            var userModelFromRepository = _repository.GetUserById(id);
+            var userModelFromRepository = await _repository.GetUserById(id);
 
             if (userModelFromRepository == null)
                 return NotFound();
@@ -109,9 +110,9 @@ namespace Api.Controllers
 
         // DELETE api/users
         [HttpDelete("{id}")]
-        public ActionResult DeleteUser(int id)
+        public async Task<ActionResult> DeleteUser(int id)
         {
-            var userModelFromRepository = _repository.GetUserById(id);
+            var userModelFromRepository = await _repository.GetUserById(id);
 
             if (userModelFromRepository == null)
                 return NotFound();

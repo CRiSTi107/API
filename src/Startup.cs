@@ -19,8 +19,9 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Api.Middleware;
 using Api.Service;
 using Api.Helpers;
+using Npgsql;
 
-namespace api
+namespace Api
 {
     public class Startup
     {
@@ -53,14 +54,18 @@ namespace api
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             //services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserRepository, SqlUserRepository>();
+            services.AddScoped<IUserRepository, NpgsqlUserRepository>();
             services.AddScoped<IUserService, UserService>();
+
+            services.AddNpgsqlConnection();
+
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "api", Version = "v1" });
             });
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

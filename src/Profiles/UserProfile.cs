@@ -1,5 +1,6 @@
 using Api.DTOs;
 using Api.Entities;
+using Api.Models;
 using AutoMapper;
 
 namespace Api.Profiles
@@ -13,6 +14,7 @@ namespace Api.Profiles
             CreateMap<UserCreateDTO, User>();
             CreateMap<UserUpdateDTO, User>();
             CreateMap<User, UserUpdateDTO>();
+            CreateMap<User, AuthenticateResponse>();
         }
 
     }

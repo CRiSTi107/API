@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Api.Entities;
 
 namespace Api.Data
@@ -8,7 +9,7 @@ namespace Api.Data
         bool SaveChanges();
 
         IEnumerable<User> GetAllUsers();
-        User GetUserById(int id);
+        Task<User> GetUserById(int id);
         User GetUserByEmailAndPassword(string Email, string Password);
         void CreateUser(User user);
         void UpdateUser(User user);

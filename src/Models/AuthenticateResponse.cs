@@ -4,16 +4,19 @@ namespace Api.Models
 {
     public class AuthenticateResponse
     {
-        public User user;
-        public string token;
+        public int Id { get; set; }
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Token { get; set; }
 
         public AuthenticateResponse(User user, string token)
         {
-            this.user = user;
-            this.token = token;
+            this.Id = user.Id;
+            this.Email = user.Email;
+            this.FirstName = user.FirstName;
+            this.LastName = user.LastName;
+            this.Token = token;
         }
-
-        // public int Id { get; set; }
-
     }
 }

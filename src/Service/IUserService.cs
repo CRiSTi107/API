@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Api.Entities;
 using Api.Models;
 
@@ -8,6 +9,6 @@ namespace Api.Service
     {
         AuthenticateResponse Authenticate(AuthenticateRequest model);
         IEnumerable<User> GetAll();
-        User GetById(int id);
+        Task<User> GetById(int id);
     }
 }

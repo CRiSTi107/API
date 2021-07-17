@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Api.Entities;
 
 namespace Api.Data
@@ -45,6 +46,11 @@ namespace Api.Data
             return _context.User.FirstOrDefault(user => user.Id == id);
         }
 
+        public Task<User> GetUserByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool SaveChanges()
         {
             return _context.SaveChanges() >= 0;
@@ -53,6 +59,11 @@ namespace Api.Data
         public void UpdateUser(User user)
         {
             //Nothing to do because EFCore does the job for us
+        }
+
+        Task<User> IUserRepository.GetUserById(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

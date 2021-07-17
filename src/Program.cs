@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace api
+namespace Api
 {
     public class Program
     {
@@ -20,7 +20,7 @@ namespace api
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseUrls("http://*:6000");
+                    webBuilder.UseUrls("http://*:5010");
                     webBuilder.UseStartup<Startup>();
                 });
     }
