@@ -16,7 +16,7 @@ namespace test
             IUserRepository repository = new UserMockRepository();
             IUserService service = new UserService(repository, );
 
-            usersController = new UsersController(repository, service, IMapper);
+            usersController = new UsersController(repository, service, Mock<IMapper>);
 
 
         }
