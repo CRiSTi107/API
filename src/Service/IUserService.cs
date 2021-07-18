@@ -7,7 +7,7 @@ namespace Api.Service
 {
     public interface IUserService
     {
-        AuthenticateResponse Authenticate(AuthenticateRequest model);
+        Task<AuthenticateResponse> Authenticate(AuthenticateRequest model);
         IEnumerable<User> GetAll();
         Task<User> GetById(int id);
     }

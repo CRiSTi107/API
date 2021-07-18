@@ -125,11 +125,11 @@ namespace Api.Controllers
 
         // POST api/users/authenticate
         [HttpPost("authenticate")]
-        public ActionResult Authenticate(AuthenticateRequest authenticateRequest)
+        public async Task<ActionResult> Authenticate(AuthenticateRequest authenticateRequest)
         {
             System.Console.WriteLine(authenticateRequest);
 
-            var response = _userService.Authenticate(authenticateRequest);
+            var response = await _userService.Authenticate(authenticateRequest);
 
             if (response == null)
                 return BadRequest(new { message = "Username or password is incorrect" });

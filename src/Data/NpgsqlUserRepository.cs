@@ -32,16 +32,22 @@ namespace Api.Data
             throw new System.NotImplementedException();
         }
 
-        public User GetUserByEmailAndPassword(string Email, string Password)
+        public async Task<User> GetUserByEmailAndPassword(string Email, string Password)
         {
-            throw new System.NotImplementedException();
+            return (await DatabaseConnection.FindAsync<User>(statementOptions => statementOptions
+                .Where($"{nameof(User.Email):C}=@Email and {nameof(User.Password):C}=@Password")
+                .WithParameters(new { Email, Password }))).ToList().FirstOrDefault();
         }
 
         public async Task<User> GetUserById(int Id)
         {
+
             return (await DatabaseConnection.FindAsync<User>(statementOptions => statementOptions
                 .Where($"{nameof(User.Id):C}=@Id")
                 .WithParameters(new { Id }))).ToList().FirstOrDefault();
+
+
+
         }
 
         public bool SaveChanges()

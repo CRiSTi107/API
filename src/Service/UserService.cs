@@ -25,9 +25,9 @@ namespace Api.Service
             _appSettings = appSettings.Value;
         }
 
-        public AuthenticateResponse Authenticate(AuthenticateRequest model)
+        public async Task<AuthenticateResponse> Authenticate(AuthenticateRequest model)
         {
-            var user = _userRepository.GetUserByEmailAndPassword(model.Email, model.Password);
+            var user = await _userRepository.GetUserByEmailAndPassword(model.Email, model.Password);
 
             // return null if user not found
             if (user == null) return null;
@@ -35,7 +35,9 @@ namespace Api.Service
             // authentication successful so generate jwt token
             var token = generateJwtToken(user);
 
-            return new AuthenticateResponse(user, token);
+            var response = new AuthenticateResponse(user, token);
+
+            return response;
         }
 
         private string generateJwtToken(User user)

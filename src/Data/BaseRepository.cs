@@ -7,7 +7,7 @@ namespace Api.Data
 {
     public abstract class BaseRepository : IDisposable
     {
-        private readonly Lazy<NpgsqlConnection> _conn;
+        private Lazy<NpgsqlConnection> _conn;
 
         public BaseRepository(Lazy<NpgsqlConnection> conn)
         {

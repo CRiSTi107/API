@@ -61,6 +61,11 @@ namespace Api.Data
             //Nothing to do because EFCore does the job for us
         }
 
+        Task<User> IUserRepository.GetUserByEmailAndPassword(string Email, string Password)
+        {
+            throw new NotImplementedException();
+        }
+
         Task<User> IUserRepository.GetUserById(int id)
         {
             throw new NotImplementedException();

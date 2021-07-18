@@ -54,6 +54,11 @@ namespace Api.Data
             throw new System.NotImplementedException();
         }
 
+        Task<User> IUserRepository.GetUserByEmailAndPassword(string Email, string Password)
+        {
+            throw new System.NotImplementedException();
+        }
+
         Task<User> IUserRepository.GetUserById(int id)
         {
             throw new System.NotImplementedException();
