@@ -11,8 +11,9 @@ using Domain.Models;
 using Domain.Entities;
 using Repository.Interfaces;
 using Domain.Helpers;
+using Service.Interfaces;
 
-namespace Api.Service
+namespace Service.Services
 {
     public class UserService : IUserService
     {

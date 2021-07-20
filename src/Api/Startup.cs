@@ -16,7 +16,7 @@ using AutoMapper;
 using Newtonsoft.Json.Serialization;
 using Microsoft.AspNetCore.HttpOverrides;
 using Api.Middleware;
-using Api.Service;
+using Service.IoC;
 using Domain.Helpers;
 using Npgsql;
 using Repository.Repositories;
@@ -56,12 +56,9 @@ namespace Api
 
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
-            //services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IUserRepository, NpgsqlUserRepository>();
-            services.AddScoped<IUserService, UserService>();
-
             services.AddNpgsqlConnection();
             services.AddRepository();
+            services.AddService();
 
             services.AddSwaggerGen(c =>
             {

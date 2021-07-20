@@ -1,10 +1,10 @@
-using Api.Service;
 using System;
 using MailKit.Net.Smtp;
 using MimeKit;
 using MailKit.Security;
+using Service.Interfaces;
 
-namespace Api.Service
+namespace Service.Services
 {
     public class EmailService : IEmailService
     {

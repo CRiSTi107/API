@@ -6,10 +6,11 @@ using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using Api.Attributes;
-using Api.Service;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Repository.Interfaces;
+using Service.Interfaces;
+using Service.Services;
 
 namespace Api.Controllers
 {
